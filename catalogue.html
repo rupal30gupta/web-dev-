@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G.L. Bajaj Online Book Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="GL Bajaj Logo">
+        </div>
+
+        <h1>G.L. Bajaj Online Book Store</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            |
+            <a href="login.html">Login</a>
+            |
+            <a href="register.html">Register</a>
+            |
+            <a href="catalogue.html">Catalogue</a>
+            |
+            <a href="cart.html">
+                Cart 🛒 <span id="cartCount">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Categories</h2>
+
+            <div class="category active" onclick="filterBooks('All', this)">
+                All Books
+            </div>
+
+            <div class="category" onclick="filterBooks('CSE', this)">
+                CSE Books
+            </div>
+
+            <div class="category" onclick="filterBooks('ECE', this)">
+                ECE Books
+            </div>
+
+            <div class="category" onclick="filterBooks('Mechanical', this)">
+                Mechanical Books
+            </div>
+
+            <div class="category" onclick="filterBooks('Civil', this)">
+                Civil Books
+            </div>
+        </aside>
+
+        <!-- Catalogue Content -->
+        <main class="content">
+
+            <h2>Book Catalogue</h2>
+
+            <!-- Search -->
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search for a book..."
+                    onkeyup="searchBooks()"
+                >
+
+                <button type="button" onclick="searchBooks()">
+                    Search
+                </button>
+            </div>
+
+            <!-- Book Table -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Book Image</th>
+                            <th>Book Name</th>
+                            <th>Author Name</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="bookTable">
+
+                        <!-- Book 1 -->
+                        <tr data-category="CSE">
+                            <td>
+                                <img
+                                    class="book-img"
+                                    src="https://covers.openlibrary.org/b/isbn/032157351X-M.jpg"
+                                    alt="Computer Science"
+                                >
+                            </td>
+
+                            <td class="book-name">
+                                Computer Science
+                            </td>
+
+                            <td class="author">
+                                Robert Sedgewick
+                            </td>
+
+                            <td class="price">
+                                Rs. 4000
+                            </td>
+
+                            <td>
+                                <button
+                                    type="button"
+                                    class="cart-btn"
+                                    onclick="addToCart('Computer Science', 4000)"
+                                >
+                                    Add to Cart
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Book 2 -->
+                        <tr data-category="CSE">
+                            <td>
+                                <img
+                                    class="book-img"
+                                    src="https://covers.openlibrary.org/b/isbn/9780134093413-M.jpg"
+                                    alt="Operating System"
+                                >
+                            </td>
+
+                            <td class="book-name">
+                                Operating System Concepts
+                            </td>
+
+                            <td class="author">
+                                Dr. Silberschatz
+                            </td>
+
+                            <td class="price">
+                                Rs. 3800
+                            </td>
+
+                            <td>
+                                <button
+                                    type="button"
+                                    class="cart-btn"
+                                    onclick="addToCart('Operating System Concepts', 3800)"
+                                >
+                                    Add to Cart
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Book 3 -->
+                        <tr data-category="CSE">
+                            <td>
+                                <img
+                                    class="book-img"
+                                    src="https://covers.openlibrary.org/b/isbn/9780078022159-M.jpg"
+                                    alt="Database"
+                                >
+                            </td>
+
+                            <td class="book-name">
+                                Database System Concepts
+                            </td>
+
+                            <td class="author">
+                                Abraham Silberschatz
+                            </td>
+
+                            <td class="price">
+                                Rs. 2500
+                            </td>
+
+                            <td>
+                                <button
+                                    type="button"
+                                    class="cart-btn"
+                                    onclick="addToCart('Database System Concepts', 2500)"
+                                >
+                                    Add to Cart
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Book 4 -->
+                        <tr data-category="Mechanical">
+                            <td>
+                                <img
+                                    class="book-img"
+                                    src="https://covers.openlibrary.org/b/isbn/9780136081684-M.jpg"
+                                    alt="Mechanical Engineering"
+                                >
+                            </td>
+
+                            <td class="book-name">
+                                Basic Mechanical Engineering
+                            </td>
+
+                            <td class="author">
+                                R.K. Rajput
+                            </td>
+
+                            <td class="price">
+                                Rs. 2500
+                            </td>
+
+                            <td>
+                                <button
+                                    type="button"
+                                    class="cart-btn"
+                                    onclick="addToCart('Basic Mechanical Engineering', 2500)"
+                                >
+                                    Add to Cart
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Book 5 -->
+                        <tr data-category="ECE">
+                            <td>
+                                <img
+                                    class="book-img"
+                                    src="https://covers.openlibrary.org/b/isbn/9780131989238-M.jpg"
+                                    alt="Digital Electronics"
+                                >
+                            </td>
+
+                            <td class="book-name">
+                                Digital Electronics
+                            </td>
+
+                            <td class="author">
+                                Morris Mano
+                            </td>
+
+                            <td class="price">
+                                Rs. 3000
+                            </td>
+
+                            <td>
+                                <button
+                                    type="button"
+                                    class="cart-btn"
+                                    onclick="addToCart('Digital Electronics', 3000)"
+                                >
+                                    Add to Cart
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Book 6 -->
+                        <tr data-category="Civil">
+                            <td>
+                                <img
+                                    class="book-img"
+                                    src="https://covers.openlibrary.org/b/isbn/9780071074178-M.jpg"
+                                    alt="Engineering Mechanics"
+                                >
+                            </td>
+
+                            <td class="book-name">
+                                Engineering Mechanics
+                            </td>
+
+                            <td class="author">
+                                R.S. Khurmi
+                            </td>
+
+                            <td class="price">
+                                Rs. 2200
+                            </td>
+
+                            <td>
+                                <button
+                                    type="button"
+                                    class="cart-btn"
+                                    onclick="addToCart('Engineering Mechanics', 2200)"
+                                >
+                                    Add to Cart
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Cart -->
+    <div class="cart-section" id="cart">
+
+        <h3>🛒 Shopping Cart</h3>
+
+        <div id="cartItems">
+            <p>Your cart is empty.</p>
+        </div>
+
+        <div class="total">
+            Total: Rs. <span id="cartTotal">0</span>
+        </div>
+
+        <button type="button" class="checkout" onclick="checkout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© Created by Rupal Gupta </p>
+        <p>Roll no. 2501920110319</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let cart = [];
+
+        // Filter books by category
+        function filterBooks(category, element) {
+            const books = document.querySelectorAll("#bookTable tr");
+
+            document.querySelectorAll(".category").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            element.classList.add("active");
+
+            books.forEach(book => {
+                const matchesCategory =
+                    category === "All" ||
+                    book.dataset.category === category;
+
+                book.style.display = matchesCategory ? "" : "none";
+            });
+        }
+
+        // Search books
+        function searchBooks() {
+            const search = document
+                .getElementById("searchInput")
+                .value
+                .trim()
+                .toLowerCase();
+
+            const books = document.querySelectorAll("#bookTable tr");
+
+            books.forEach(book => {
+                const name = book
+                    .querySelector(".book-name")
+                    .textContent
+                    .toLowerCase();
+
+                const author = book
+                    .querySelector(".author")
+                    .textContent
+                    .toLowerCase();
+
+                const matchesSearch =
+                    name.includes(search) ||
+                    author.includes(search);
+
+                book.style.display = matchesSearch ? "" : "none";
+            });
+        }
+
+        // Add book to cart
+        function addToCart(name, price) {
+            cart.push({ name, price });
+
+            updateCart();
+
+            alert(name + " has been added to your cart!");
+        }
+
+        // Update cart
+        function updateCart() {
+            const cartItems = document.getElementById("cartItems");
+            const cartCount = document.getElementById("cartCount");
+            const cartTotal = document.getElementById("cartTotal");
+
+            cartCount.textContent = cart.length;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = "<p>Your cart is empty.</p>";
+                cartTotal.textContent = "0";
+                return;
+            }
+
+            let total = 0;
+
+            cartItems.innerHTML = cart.map((item, index) => {
+                total += item.price;
+
+                return `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong>
+                            <br>
+                            Rs. ${item.price}
+                        </div>
+
+                        <button
+                            type="button"
+                            class="remove-btn"
+                            onclick="removeFromCart(${index})"
+                        >
+                            Remove
+                        </button>
+                    </div>
+                `;
+            }).join("");
+
+            cartTotal.textContent = total;
+        }
+
+        // Remove book from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Show / Hide cart
+        function toggleCart() {
+            document.getElementById("cart").classList.toggle("show");
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            const total = cart.reduce(
+                (sum, item) => sum + item.price,
+                0
+            );
+
+            alert(
+                "Order placed successfully! 🎉\n\n" +
+                "Total Amount: Rs. " + total
+            );
+
+            cart = [];
+            updateCart();
+
+            document.getElementById("cart").classList.remove("show");
+        }
+    </script>
+
+</body>
+</html>
